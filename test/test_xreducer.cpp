@@ -146,6 +146,14 @@ namespace xt
         EXPECT_EQ(res(1), 6.0);
     }
 
+    TEST(xreducer, single_axis_sugar)
+    {
+        xarray<double> m = {{1, 2}, {3, 4}};
+        xarray<double> res1 = xt::sum(m, {1});
+        xarray<double> res2 = xt::sum(m, 1);
+        EXPECT_EQ(res1, res2);
+    }
+
     TEST(xreducer, sum2)
     {
         xarray<double> u = ones<double>({2, 4});
